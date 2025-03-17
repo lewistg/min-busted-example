@@ -1,0 +1,17 @@
+describe("vim.api.nvim_bufset_lines", function()
+    it("can add lines to a buffer", function()
+        local buf_nr = vim.api.nvim_create_buf(true, false)
+        vim.api.nvim_buf_set_lines(buf_nr, 0, 0, false, {"foo", "bar", "baz"})
+        local lines = vim.api.nvim_buf_get_lines(buf_nr, 0, 2, true)
+        assert.are.same(lines, {"foo", "bar"})
+    end)
+
+    it("can replace lines in a buffer", function()
+        local buf_nr = vim.api.nvim_create_buf(true, false)
+        vim.api.nvim_buf_set_lines(buf_nr, 0, 0, false, {"foo", "bar", "baz"})
+        -- replace second line
+        vim.api.nvim_buf_set_lines(buf_nr, 1, 1, false, {"qux"})
+        local lines = vim.api.nvim_buf_get_lines(buf_nr, 1, 2, true)
+        assert.are.same(lines, {"qux"})
+    end)
+end)

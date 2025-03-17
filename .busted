@@ -1,0 +1,14 @@
+return {
+    _all = {
+        coverage = false,
+        lua = "./tools/nlua.sh",
+        lpath = "lua/?.lua;lua/?/init.lua;lua/?/?.lua",
+        output = "plainTerminal"
+    },
+    default = {
+        verbose = true
+    },
+    tests = {
+        verbose = true
+    }
+}
